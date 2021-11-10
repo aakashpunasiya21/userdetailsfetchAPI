@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import { Button, Table } from "react-bootstrap";
-// import Button from "@restart/ui/esm/Button";
 class Users extends React.Component{
     constructor(props){
         super(props);
