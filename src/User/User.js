@@ -26,6 +26,9 @@ class Users extends React.Component{
     addUser=()=>{
         this.props.history.push("/users/add");
     }
+    Edit_Data =(e) =>{
+        this.props.history.push(`users/edit/${e}`);
+    }
   render(){
       let userData = this.state.usr;
       return(
@@ -48,7 +51,9 @@ class Users extends React.Component{
                             <td>{data.email}</td>
                             <td>{data.username}</td>
                             <Button variant="outline-primary" onClick={()=>this.Todos(data.id)}>Todo</Button>
+                            <Button variant="outline-danger" onClick={()=>this.Edit_Data(data.id)}>Edit</Button>
                             <Button variant="outline-primary" onClick={()=>this.Posts(data.id)}>Post</Button>
+                            
                            
                         </tr>
                     ))}

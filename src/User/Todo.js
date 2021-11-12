@@ -1,7 +1,5 @@
 import axios from "axios";
 import React from "react";
-import { ListGroup, Table } from "react-bootstrap";
-
 class Todo extends React.Component{
     constructor(props){
         super(props);
@@ -24,15 +22,13 @@ class Todo extends React.Component{
   render(){
       const todoData=this.state.Todo;
       let todo_Data = todoData.map((data)=>(
-       
-          
-          <div>
+        <div>
             <ul key={data.id}>
               <li>UserId : {data.userId}</li>
               <li>Id : {data.id}</li>
               <li>Title : {data.title}</li>
              </ul>
-          </div>
+        </div>
         ));
        
       return(
