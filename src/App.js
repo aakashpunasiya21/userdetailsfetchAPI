@@ -22,8 +22,7 @@ function App() {
             </LinkContainer>
           </Container>
         </Navbar>
-      </div>
-      
+      </div>                             
         <Route exact path="/user" component={Users}></Route>
         <Route exact path="/users/:id/posts" component={Post}></Route>
         <Route exact path="/users/:id/todos" component={Todo}></Route>

@@ -4,36 +4,40 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 
 const EditUser =(props) =>{
-  const getId = props.match.params.id;
-  let history = useHistory();
+const getId = props.match.params.id;
+let history = useHistory();
   const [editData,seteditData] = useState({
     name : "",
     username :"",
     email : "",
     });
+
   const { name,username,email} = editData;
   
   const OnChange =(e) =>{
     seteditData({...editData ,[e.target.name]:e.target.value});
 
   }
+
   useEffect(() =>{
     EditUser();
   }, []);
-  const EditUser = async () =>{
-    const result = await axios.get(`http://localhost:3000/users/${getId}`)
-    seteditData(result.data);
-  }
+
   const OnSubmit = async (e) =>{
     e.preventDefault();
     await axios.put(`http://localhost:3000/users/${getId}`,editData);
     history.push("/user");
   }
 
+  const EditUser = async () =>{
+    const result = await axios.get(`http://localhost:3000/users/${getId}`)
+    seteditData(result.data);
+  }
+
   return(
       <>
           <div className="container p-3 text-center bg-light">
-              <h1 className="mb-1">Edit User</h1>
+            <h1 className="mb-1">Edit User</h1>
               <Form onSubmit={OnSubmit}>
                   <InputGroup className="p-4 -3">
                       <InputGroup.Text id = "basic-control">Name</InputGroup.Text>

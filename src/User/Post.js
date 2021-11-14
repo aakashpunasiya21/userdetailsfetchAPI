@@ -1,23 +1,20 @@
     import React from "react";
     import axios from "axios";
-    import { Table, Button, ListGroup } from "react-bootstrap";
+    import {Button, ThemeProvider} from "react-bootstrap";
+    import { posts } from "../actions";
+    import { connect } from "react-redux";
     class Post extends React.Component {
         constructor(props) {
             super(props);
-            this.state = {
-                PostArray: [],
-            }
+           
         }
-        
         comment_All = () => {
             const post_id = this.props.match.params.id
             this.props.history.push(`/posts/${post_id}/comments`);
         }
         postData = async (userId) => {
             const api = await axios.get(`http://localhost:3000/users/${userId}/posts`);
-            this.setState({
-                PostArray: api.data
-            })
+            this.props.posts(api.data);
         }
 
         componentDidMount() {
@@ -28,7 +25,7 @@
 
         render() {
             // if(!this.post_id)return "loading"
-            const postData = this.state.PostArray;
+            const postData = this.props.my_post;
             let post_Data = postData.map((data) => (
                 <div>
                     <ul key={data.id}>
@@ -55,4 +52,12 @@
         }
 
     }
-    export default Post
+    const mapDispatchToProps = {
+        posts
+    }
+    const mapStateToProps = (state) =>({
+        my_post :state.post
+    })
+    const UsersConnectedWithRedux = connect(mapStateToProps ,mapDispatchToProps)(Post)
+    export default UsersConnectedWithRedux
+    
