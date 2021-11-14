@@ -34,11 +34,6 @@ const AddUser =() =>{
 
     return(
         <>
-          {/* <h1>This is Add User</h1>
-          <input type ="text" name ="name" onChange={(e)=>Setname(e.target.value)} />
-          <input type ="text" name ="username" onChange={(e)=>Setusername(e.target.value)}/>
-          <input type ="email" name ="email" onChange={(e)=>Setemail(e.target.value)}/>
-          <Button onClick={addUser}>Add User</Button> */}
 
 
           <div className="container p-3 text-center bg-light">
