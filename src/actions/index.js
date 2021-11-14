@@ -6,6 +6,7 @@ export const getName = 'getName';
 export const getUser = 'getUser';
 export const getEmail = 'getEmail';
 export const ADD_USER ="ADD_USER"
+ 
 
 export const users = (payload) => (
     {
@@ -30,24 +31,24 @@ export const posts = (payload) => (
     }
 )
 
-export const Add_USER = (payload) =>(
+export const AddUSER = (payload) =>(
     {
-        type : Add_USER,payload
+        type : ADD_USER,payload
     }
 )
-// export const get_name = (payload) => (
-//     {
-//         type : getName ,payload
-//     }
-// )
-// export const get_user = (payload) => (
-//     {
-//         type : getUser ,payload
-//     }
-// )
+export const GetName = (payload) => (
+    {
+        type : getName ,payload
+    }
+)
+export const GetUser = (payload) => (
+    {
+        type : getUser ,payload
+    }
+)
 
-// export const get_email = (payload) => (
-//     {
-//         type : getEmail ,payload
-//     }
-// )
+export const GetEmail = (payload) => (
+    {
+        type : getEmail ,payload
+    }
+)

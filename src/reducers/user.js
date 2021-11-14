@@ -1,11 +1,13 @@
-import { Posts,Users,Todos,Comments ,Adds} from "../actions";
+import { Posts,Users,Todos,Comments ,ADD_USER, GetName, getName, getUser, getEmail} from "../actions";
 const initialState = {
     arr : [],
     post : [],
     todo : [],
     comment : [],
-    add : {name:'',username:'',email:''},
-    record:[]
+    name :{},
+    username :{},
+    email : {},
+    record:[],
 };
 
 export default function user_reducer(state = initialState,action){
@@ -31,7 +33,22 @@ export default function user_reducer(state = initialState,action){
                 comment : action.payload,
             }
        
-    
+        case getName :
+            return{
+                ...state,
+                name :action.payload,
+            }
+            case getUser :
+                return{
+                    ...state,
+                    username :action.payload,
+                }
+                case getEmail :
+                    return{
+                        ...state,
+                        email :action.payload,
+                    }
+                   
         default:
             return state;
     }
