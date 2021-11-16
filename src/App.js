@@ -24,9 +24,9 @@ function App() {
         </Navbar>
       </div>                             
         <Route exact path="/user" component={Users}></Route>
-        <Route exact path="/users/:id/posts" component={Post}></Route>
-        <Route exact path="/users/:id/todos" component={Todo}></Route>
-        <Route exact path="/posts/:id/comments" component={Comment}></Route>
+        <Route  path="/users/:id/posts" component={Post}></Route>
+        <Route  path="/users/:id/todos" component={Todo}></Route>
+        <Route  path="/posts/:id/comments" component={Comment}></Route>
         <Route path="/users/add" component={AddUser} />
         <Route exact path="/users/edit/:id" component={EditUser}></Route>
    </Router>

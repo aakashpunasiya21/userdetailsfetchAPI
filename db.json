@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "name": "Leanne Heen",
+      "name": "Leanne Heendgygdyggdy",
       "username": "Bret",
       "email": "Sincere@april.biz",
       "address": {
@@ -25,7 +25,7 @@
     },
     {
       "id": 2,
-      "name": "Ervin Howell",
+      "name": "Ervin Howellzx",
       "username": "Antonette",
       "email": "Shanna@melissa.tv",
       "address": {
@@ -48,7 +48,7 @@
     },
     {
       "id": 3,
-      "name": "Clementine Bauch",
+      "name": "Clementine Bauchs",
       "username": "Samantha",
       "email": "Nathan@yesenia.net",
       "address": {
@@ -231,34 +231,16 @@
       }
     },
     {
-      "name": "Aakas ",
-      "username": "ap",
-      "email": "apunasiya@bestpeers.com",
+      "name": "sur@123gmail.com",
+      "username": "sur@123gmail.com",
+      "email": "sur@123gmail.com",
       "id": 11
     },
     {
-      "name": "Aakas ",
-      "username": "ap",
-      "email": "apunasiya@bestpeers.com",
+      "name": "sup@gmail.com",
+      "username": "sup@gmail.com",
+      "email": "sup@gmail.com",
       "id": 12
-    },
-    {
-      "name": "aaa",
-      "username": "ap",
-      "email": "apunasiya@bestpeers.com",
-      "id": 13
-    },
-    {
-      "name": "apunasiya@gmail.com",
-      "username": "",
-      "email": "",
-      "id": 14
-    },
-    {
-      "name": "a@gmail.com",
-      "username": "",
-      "email": "",
-      "id": 15
     }
   ],
   "todos": [

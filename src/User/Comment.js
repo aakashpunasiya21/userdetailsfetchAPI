@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { comments } from "../actions";
+import {showcomments} from "../actions"
 import { connect } from "react-redux";
 class Comment extends React.Component{
     constructor(props){
@@ -9,7 +9,7 @@ class Comment extends React.Component{
     }
     CommentData = async (post_id)=>{
         const commentGet = await axios.get(`http://localhost:3000/posts/${post_id}/comments`);
-        this.props.comments(commentGet.data)
+        this.props.showcomments(commentGet.data)
 
     }
     componentDidMount(){
@@ -18,31 +18,33 @@ class Comment extends React.Component{
 
     }
   render(){
-      const commentData = this.props.userComment;
-      let single_comment = commentData.map((data) => {
-        return (
-         
-            <ul key={data.id}>
-              <li>PoostId : {data.postId}</li>
-              <li >Id : {data.id}</li>
-              <li>Email : {data.email}</li>
-              <li>Name : {data.name}</li>
-              <li>Body : {data.body}</li>
-            </ul>
-        );
-    });
+      const { comments } = this.props;
+      console.log(comments)
+    
     return(
-        <><br/>
-         <h1 className="text-center ">User Comments</h1><hr/>
-        {single_comment}</>
+        <>
+          <h1 className="text-center ">User Comments</h1><hr/>
+          { comments.map((data) => (
+      <div>
+        <ul key={data.id}>
+            <li>PostId : {data.postId}</li>
+          <li>Name : {data.name}</li>
+          <li>Email : {data.email}</li>
+          <li>Body : {data.body}</li>
+        </ul>
+      </div>
+    ))};
+        </>
     )
 }
 }
-const mapDispatchToProps = {
-    comments
-}
-const mapState = (state) =>({
-    userComment :state.comment
-})
-const UsersConnectedWithRedux = connect(mapState ,mapDispatchToProps)(Comment)
-export default UsersConnectedWithRedux
+const mapStateToProps = (state) =>({
+    comments :state.showComments.comments
+  })
+  
+  const mapDispatchToProps = {
+    showcomments
+  }
+  
+  export default connect(mapStateToProps,mapDispatchToProps)(Comment)
+  

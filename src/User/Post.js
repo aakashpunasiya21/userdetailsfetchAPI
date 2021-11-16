@@ -1,63 +1,63 @@
-    import React from "react";
-    import axios from "axios";
-    import {Button, ThemeProvider} from "react-bootstrap";
-    import { posts } from "../actions";
-    import { connect } from "react-redux";
-    class Post extends React.Component {
-        constructor(props) {
-            super(props);
-           
-        }
-        comment_All = () => {
-            const post_id = this.props.match.params.id
-            this.props.history.push(`/posts/${post_id}/comments`);
-        }
-        postData = async (userId) => {
-            const api = await axios.get(`http://localhost:3000/users/${userId}/posts`);
-            this.props.posts(api.data);
-        }
+import React from "react";
+import axios from "axios";
+import { Button, ThemeProvider } from "react-bootstrap";
+//import { posts } from "../actions";
+import showPosts from "../actions"
+import { showposts } from "../actions";
+import { connect } from "react-redux";
+class Post extends React.Component {
+  constructor(props) {
+    super(props);
 
-        componentDidMount() {
-            const { id } = this.props.match.params;
-            this.postData(id);
-        }
-       
+  }
+  comment_All = () => {
+    const post_id = this.props.match.params.id
+    this.props.history.push(`/posts/${post_id}/comments`);
+  }
+  postData = async (userId) => {
+    const api = await axios.get(`http://localhost:3000/users/${userId}/posts`);
+    this.props.showposts(api.data);
+  }
 
-        render() {
-            // if(!this.post_id)return "loading"
-            const postData = this.props.my_post;
-            let post_Data = postData.map((data) => (
-                <div>
-                    <ul key={data.id}>
-                      <li>User Id : {data.userId}</li>
-                      <li>Title : {data.title}</li>
-                      <li>Body : {data.body}</li>
-                     
-                    </ul>
-                   
-                </div>
-            
-            ));
-           
-            return (
-                <>
-                    <div>
-                    <Button variant="outline-danger" className="" onClick={() => this.comment_All(this.data)}>Comments</Button>
-                      <h1 className="text-center">User Post</h1><hr/>
-                      {post_Data}
-                    </div>
-                </>
-            )
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    this.postData(id);
+  }
 
-        }
 
-    }
-    const mapDispatchToProps = {
-        posts
-    }
-    const mapStateToProps = (state) =>({
-        my_post :state.post
-    })
-    const UsersConnectedWithRedux = connect(mapStateToProps ,mapDispatchToProps)(Post)
-    export default UsersConnectedWithRedux
-    
+  render() {
+    // if(!this.post_id)return "loading"
+    const { posts } = this.props;
+    return (
+      <>
+        <div>
+          <Button variant="outline-danger" className="" onClick={() => this.comment_All(this.data)}>Comments</Button>
+          <h1 className="text-center">User Post</h1><hr />
+          {posts.map((data) => (
+            <div>
+              <ul key={data.id}>
+                <li>User Id : {data.userId}</li>
+                <li>Title : {data.title}</li>
+                <li>Body : {data.body}</li>
+
+              </ul>
+
+            </div>
+
+          ))};
+        </div>
+      </>
+    )
+
+  }
+
+}
+const mapStateToProps = (state) => ({
+  posts: state.showPosts.posts
+})
+
+const mapDispatchToProps = {
+  showposts
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Post)
