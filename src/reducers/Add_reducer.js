@@ -1,35 +1,27 @@
-// import Adds from '../actions/index';
-// import { getName, getUser, getEmail } from '../actions/index';
-// const initialSate =
-// {
-//     name: '',
-//     username: '',
-//     email: ''
-// },
-// const Add_reducer = (state = initialSate, action) => {
-//     switch (action.type) {
-//         case getName:
-//             return {
-//                 ...state,
-//                 name: action.payload,
+import { ADD_USER } from "../actions";
+import { SHOW } from "../actions";
+const initialState = {
+  data:
+  {
+    name: "",
+    username: "",
+    email: ""
+  },
 
 
-//             }
-//         case getUser:
-//             return {
-//                 ...state,
+}
+const addusers = (state = initialState, action) => {
+  switch (action.type) {
+    case ADD_USER:
+      return {
+        ...state,
+        data: action.payload
+      }
 
-//                 username: action.payload,
 
-//             }
-//         case getEmail:
-//             return {
-//                 ...state,
-//                 email: action.payload,
-//             }
+    default:
+      return state
+  }
 
-//         default:
-//             break;
-//     }
-// }
-// export default Add_reducer;
+}
+export default addusers;

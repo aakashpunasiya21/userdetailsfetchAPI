@@ -1,6 +1,8 @@
-import {  Users } from "../actions";
+import { Users, ADD_FUNCTION, SHOW } from "../actions";
 const initialState = {
   usr: [],
+  addshow: false,
+  show: false,
 };
 
 const user_reducer = (state = initialState, action) => {
@@ -10,7 +12,18 @@ const user_reducer = (state = initialState, action) => {
         ...state,
         usr: action.payload,
       }
-      default:
+    case ADD_FUNCTION:
+      return {
+        ...state,
+        addshow: action.payload
+      }
+    case SHOW:
+      return {
+        ...state,
+        show: action.payload
+
+      }
+    default:
       return state;
   }
 }

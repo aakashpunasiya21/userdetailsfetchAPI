@@ -1,4 +1,4 @@
-import { Users, EDIT_USER } from "../actions";
+import { EDIT_USER } from "../actions";
 const initialState = {
   data: {
     name: "",
@@ -7,7 +7,7 @@ const initialState = {
   }
 };
 
-export default function editusers(state = initialState, action) {
+const editusers = (state = initialState, action) => {
   switch (action.type) {
     case EDIT_USER:
       return {
@@ -19,3 +19,4 @@ export default function editusers(state = initialState, action) {
       return state;
   }
 }
+export default editusers

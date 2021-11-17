@@ -2,7 +2,8 @@ import React from "react";
 import axios from "axios";
 import { Button, Table } from "react-bootstrap";
 import { connect } from 'react-redux';
-import { users } from '../actions/index';
+import { users, addShow, setShow } from '../actions/index';
+import AddUser from "./AddUser";
 class Users extends React.Component {
   constructor(props) {
     super(props);
@@ -20,14 +21,22 @@ class Users extends React.Component {
   Posts = (e) => {
     this.props.history.push(`/users/${e}/posts`)
   }
-  addUser = () => {
-    this.props.history.push("/users/add");
-  }
+  // addUser = () => {
+  //   this.props.history.push("/users/add");
+  // }
   editData = (e) => {
     this.props.history.push(`users/edit/${e}`)
   }
+
   render() {
-    const { usr } = this.props;
+    const { addshow } = this.props.usr;
+    if (addshow) {
+      return (
+        <AddUser />
+      )
+    }
+    const { usr } = this.props.usr;
+
     return (
       <>
         <h1 className="text-center">User Details</h1><hr />
@@ -55,8 +64,7 @@ class Users extends React.Component {
 
           </tbody>
         </Table>
-        <Button variant="outline-success" onClick={() => this.addUser(this.addUser)}>Add User</Button>
-
+        <Button variant="outline-success" onClick={() => this.props.addShow(true)}>Add User</Button>
       </>
     )
   }
@@ -64,11 +72,16 @@ class Users extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  usr: state.user_reducer.usr
+  usr: state.user_reducer
+
 })
 const mapDispatchToProps = {
   // users:state.user_reducer.users
-  users
+  users,
+  addShow,
+  setShow
+
+
 }
 
 const UsersConnectedWithRedux = connect(mapStateToProps, mapDispatchToProps)(Users)

@@ -4,13 +4,16 @@ import showTodos from "./showtodos";
 import showPosts from "./showposts";
 import showComments from "./showcomments";
 import editusers from "./editusers"
+import addusers from "./Add_reducer";
 // import Add_reducer from "./Add_reducer";
 
 export default combineReducers({
-    user_reducer,
-    showTodos,
-    showPosts,
-    showComments,
-    editusers
+
+  showTodos,
+  showPosts,
+  showComments,
+  editusers,
+  addusers,
+  user_reducer,
 
 });
