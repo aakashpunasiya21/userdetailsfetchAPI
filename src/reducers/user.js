@@ -2,7 +2,7 @@ import { Users, ADD_FUNCTION, SHOW } from "../actions";
 const initialState = {
   usr: [],
   addshow: false,
-  show: false,
+  show: true,
 };
 
 const user_reducer = (state = initialState, action) => {

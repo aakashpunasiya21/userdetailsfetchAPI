@@ -14,8 +14,10 @@ const AddUser = () => {
     state.addusers
   ))
   const showselector = useSelector(state => (
-    state.user_reducer.show
+    state.user_reducer
+   
   ))
+  
   let history = useHistory();
 
   const { name, username, email } = selector.data;
@@ -28,7 +30,7 @@ const AddUser = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios.post('http://localhost:3000/users', selector.data)
-    history.push("/user");
+        onClose();
 
   }
 
@@ -46,11 +48,12 @@ const AddUser = () => {
   return (
     <>
       <div className="container p-3 text-center bg-light">
-        <Modal show={onShow} onClick={onClose}>
+        <Modal show={showselector.show} onHide={onClose}>
+           
           <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            <Modal.Title>Add User</Modal.Title>
           </Modal.Header>
-          <Modal.Body><h1 className="mb-1">Add User</h1>
+          <Modal.Body><h1 className="mb-1"></h1>
             <Form onSubmit={onSubmit}>
               <InputGroup className="p-4 -3">
                 <InputGroup.Text id="basic-control">Name</InputGroup.Text>
@@ -75,13 +78,13 @@ const AddUser = () => {
                   onChange={handleInput}>
                 </FormControl>
               </InputGroup>
-              <Button type="submit" onClick="">Add User</Button>
+              
             </Form></Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={onClose}>
               Close
             </Button>
-            <Button variant="primary" onClick={onClose}>
+            <Button variant="primary" onClick={onSubmit}>
               Save Changes
             </Button>
           </Modal.Footer>
