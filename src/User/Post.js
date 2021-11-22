@@ -1,9 +1,8 @@
 import React from "react";
-import axios from "axios";
-import { Button, ThemeProvider } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { requestPost } from "../thunks/users";
 //import { posts } from "../actions";
-
+import axios from "axios";
 import { showposts } from "../actions";
 import { connect } from "react-redux";
 class Post extends React.Component {

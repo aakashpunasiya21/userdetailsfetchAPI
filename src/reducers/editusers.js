@@ -1,4 +1,5 @@
 import { EDIT_USER } from "../actions";
+import { addShow } from "../actions";
 const initialState = {
   data: {
     name: "",
@@ -14,7 +15,7 @@ const editusers = (state = initialState, action) => {
         ...state,
         data: action.payload,
       }
-
+     
     default:
       return state;
   }

@@ -81,8 +81,6 @@ const mapDispatchToProps = {
   addShow,
   setShow,
   requestUsers,
-
-
 }
 
 const UsersConnectedWithRedux = connect(mapStateToProps, mapDispatchToProps)(Users)

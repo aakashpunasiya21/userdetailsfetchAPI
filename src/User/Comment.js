@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
-import { requestComment } from "../thunks/users";
 import { showcomments } from "../actions"
 import { connect } from "react-redux";
+import { requestComment } from "../thunks/users";
 class Comment extends React.Component {
   constructor(props) {
     super(props)
@@ -14,8 +14,8 @@ class Comment extends React.Component {
 
   // }
   componentDidMount() {
-    const { post_id } = this.props.match.params;
-    this.porps.requestComment(post_id);
+    const { id } = this.props.match.params;
+    this.props.requestComment(id);
 
   }
   render() {
@@ -45,7 +45,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   showcomments,
-
+  requestComment,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Comment)
