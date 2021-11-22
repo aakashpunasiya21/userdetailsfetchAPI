@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import { requestUsers } from "../thunks/users";
 import { Button, Table } from "react-bootstrap";
 import { connect } from 'react-redux';
 import { users, addShow, setShow } from '../actions/index';
@@ -8,12 +8,12 @@ class Users extends React.Component {
   constructor(props) {
     super(props);
   }
-  DataLoad = async () => {
-    const fakeapi = await axios.get("http://localhost:3000/users");
-    this.props.users(fakeapi.data)
-  }
+  // DataLoad = async () => {
+  //   const fakeapi = await axios.get("http://localhost:3000/users");
+  //   this.props.users(fakeapi.data)
+  // }
   componentDidMount() {
-    this.DataLoad();
+    this.props.requestUsers();
   }
   todos = (e) => {
     this.props.history.push(`/users/${e}/todos`)
@@ -79,7 +79,8 @@ const mapDispatchToProps = {
   // users:state.user_reducer.users
   users,
   addShow,
-  setShow
+  setShow,
+  requestUsers,
 
 
 }

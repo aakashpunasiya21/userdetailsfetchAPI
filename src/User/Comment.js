@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { requestComment } from "../thunks/users";
 import { showcomments } from "../actions"
 import { connect } from "react-redux";
 class Comment extends React.Component {
@@ -7,14 +8,14 @@ class Comment extends React.Component {
     super(props)
 
   }
-  CommentData = async (post_id) => {
-    const commentGet = await axios.get(`http://localhost:3000/posts/${post_id}/comments`);
-    this.props.showcomments(commentGet.data)
+  // CommentData = async (post_id) => {
+  //   const commentGet = await axios.get(`http://localhost:3000/posts/${post_id}/comments`);
+  //   this.props.showcomments(commentGet.data)
 
-  }
+  // }
   componentDidMount() {
-    const { id } = this.props.match.params;
-    this.CommentData(id);
+    const { post_id } = this.props.match.params;
+    this.porps.requestComment(post_id);
 
   }
   render() {
@@ -43,7 +44,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  showcomments
+  showcomments,
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Comment)

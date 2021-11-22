@@ -15,9 +15,9 @@ const AddUser = () => {
   ))
   const showselector = useSelector(state => (
     state.user_reducer
-   
+
   ))
-  
+
   let history = useHistory();
 
   const { name, username, email } = selector.data;
@@ -30,7 +30,7 @@ const AddUser = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios.post('http://localhost:3000/users', selector.data)
-        onClose();
+    onClose();
 
   }
 
@@ -42,14 +42,13 @@ const AddUser = () => {
   }
   const onClose = () => {
     dispatch(setShow(false))
-    console.log(showselector.show)
 
   }
   return (
     <>
       <div className="container p-3 text-center bg-light">
         <Modal show={showselector.show} onHide={onClose}>
-           
+
           <Modal.Header closeButton>
             <Modal.Title>Add User</Modal.Title>
           </Modal.Header>
@@ -78,7 +77,7 @@ const AddUser = () => {
                   onChange={handleInput}>
                 </FormControl>
               </InputGroup>
-              
+
             </Form></Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={onClose}>

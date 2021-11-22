@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import { requestTodos } from "../thunks/users";
 import { connect } from 'react-redux';
 //import { todos } from '../actions/index';
 import { showtodos } from '../actions/index';
@@ -8,15 +9,15 @@ class Todo extends React.Component {
     super(props);
 
   }
-  TodoUser = async (id) => {
-    const todo = await axios.get(`http://localhost:3000/users/${id}/todos`);
-    this.props.showtodos(todo.data);
-    console.log(this.props.todos)
+  // TodoUser = async (id) => {
+  //   const todo = await axios.get(`http://localhost:3000/users/${id}/todos`);
+  //   this.props.showtodos(todo.data);
+  //   console.log(this.props.todos)
 
-  }
+  // }
   componentDidMount() {
     const { id } = this.props.match.params;
-    this.TodoUser(id);
+    this.props.requestTodos(id);
   }
   render() {
     const { todos } = this.props
@@ -47,7 +48,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  showtodos
+  showtodos,
+  requestTodos,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Todo)

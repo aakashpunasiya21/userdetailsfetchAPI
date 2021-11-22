@@ -1,8 +1,9 @@
 import React from "react";
 import axios from "axios";
 import { Button, ThemeProvider } from "react-bootstrap";
+import { requestPost } from "../thunks/users";
 //import { posts } from "../actions";
-import showPosts from "../actions"
+
 import { showposts } from "../actions";
 import { connect } from "react-redux";
 class Post extends React.Component {
@@ -14,14 +15,14 @@ class Post extends React.Component {
     const post_id = this.props.match.params.id
     this.props.history.push(`/posts/${post_id}/comments`);
   }
-  postData = async (userId) => {
-    const api = await axios.get(`http://localhost:3000/users/${userId}/posts`);
-    this.props.showposts(api.data);
-  }
+  // postData = async (userId) => {
+  //   const api = await axios.get(`http://localhost:3000/users/${userId}/posts`);
+  //   this.props.showposts(api.data);
+  // }
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    this.postData(id);
+    this.props.requestPost(id);
   }
 
 
@@ -57,7 +58,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  showposts
+  showposts,
+  requestPost,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Post)
